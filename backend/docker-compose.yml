@@ -1,0 +1,57 @@
+version: '3.8'
+
+services:
+  api-gateway:
+    build: ./api-gateway
+    ports:
+      - "2000:2000"
+    environment:
+      - NODE_ENV=development
+      - PORT=2000
+      - JWT_SECRET=your-super-secret-jwt-key-change-in-production
+      - MONGODB_URI=mongodb://mongodb:27017/myBooksData
+      - EMAIL_USER=your-email@gmail.com
+      - EMAIL_PASS=your-app-password
+    depends_on:
+      - mongodb
+      - orders-payments
+      - shipping
+      - book-details
+
+  orders-payments:
+    build: ./orders-payments
+    ports:
+      - "2001:2001"
+    environment:
+      - NODE_ENV=development
+      - PORT=2001
+      - EMAIL_USER=your-email@gmail.com
+      - EMAIL_PASS=your-app-password
+
+  shipping:
+    build: ./shipping
+    ports:
+      - "2002:2002"
+    environment:
+      - NODE_ENV=development
+      - PORT=2002
+
+  book-details:
+    build: ./product-details
+    ports:
+      - "2003:2003"
+    environment:
+      - NODE_ENV=development
+      - PORT=2003
+
+  mongodb:
+    image: mongo:7
+    ports:
+      - "27017:27017"
+    volumes:
+      - mongodb_data:/data/db
+    environment:
+      - MONGO_INITDB_DATABASE=myBooksData
+
+volumes:
+  mongodb_data:

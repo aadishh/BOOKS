@@ -1,0 +1,15 @@
+{
+  "name": "microservice-backend",
+  "version": "1.0.0",
+  "description": "Microservice architecture backend with TypeScript",
+  "scripts": {
+    "install-all": "cd api-gateway && npm install && cd ../orders-payments && npm install && cd ../shipping && npm install && cd ../product-details && npm install",
+    "build-all": "cd api-gateway && npm run build && cd ../orders-payments && npm run build && cd ../shipping && npm run build && cd ../product-details && npm run build",
+    "start-all": "concurrently \"cd api-gateway && npm start\" \"cd orders-payments && npm start\" \"cd shipping && npm start\" \"cd product-details && npm start\"",
+    "dev-all": "concurrently \"cd api-gateway && npm run dev\" \"cd orders-payments && npm run dev\" \"cd shipping && npm run dev\" \"cd product-details && npm run dev\"",
+    "clean-all": "cd api-gateway && npm run clean && cd ../orders-payments && npm run clean && cd ../shipping && npm run clean && cd ../product-details && npm run clean"
+  },
+  "devDependencies": {
+    "concurrently": "^8.2.2"
+  }
+}
