@@ -30,7 +30,7 @@ export function WishlistProvider({ children }: { children: ReactNode }) {
   // Load wishlist on mount
   useEffect(() => {
     let isMounted = true;
-    
+
     const loadWishlist = async () => {
       try {
         setLoading(true);
@@ -51,7 +51,7 @@ export function WishlistProvider({ children }: { children: ReactNode }) {
     };
 
     loadWishlist();
-    
+
     return () => {
       isMounted = false;
     };
@@ -108,7 +108,7 @@ export function WishlistProvider({ children }: { children: ReactNode }) {
     refreshWishlist,
   };
 
-  return <WishlistContext.Provider value={value}>{children}</WishlistContext.Provider>;
+  return React.createElement(WishlistContext.Provider, { value }, children);
 }
 
 export function useWishlist(): WishlistContextType {
