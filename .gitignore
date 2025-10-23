@@ -36,24 +36,34 @@ coverage/
 *.swp
 *.swo
 
-# Dependency directories (redundant, but safe)
-frontend/node_modules/
-backend/node_modules/
-
 # ===================================
 # Frontend (Next.js - frontend)
 # ===================================
 
-# Next.js build output
+# Dependency directory
+frontend/node_modules/
+
+# Build output
 frontend/.next/
+frontend/out/
 frontend/.vercel/
 
-# TypeScript build files
+# TypeScript build info
 frontend/*.tsbuildinfo
+
+# Local environment files
+frontend/.env
+frontend/.env.local
+frontend/.env.development.local
+frontend/.env.test.local
+frontend/.env.production.local
 
 # ===================================
 # Backend (Node.js / Express / API)
 # ===================================
+
+# Dependency directory
+backend/node_modules/
 
 # Build artifacts
 backend/dist/
