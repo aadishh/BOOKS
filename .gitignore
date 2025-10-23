@@ -46,17 +46,10 @@ backend/node_modules/
 
 # Next.js build output
 frontend/.next/
-frontend/out/
 frontend/.vercel/
 
 # TypeScript build files
 frontend/*.tsbuildinfo
-
-# Local env files
-frontend/.env.local
-frontend/.env.development.local
-frontend/.env.test.local
-frontend/.env.production.local
 
 # ===================================
 # Backend (Node.js / Express / API)
