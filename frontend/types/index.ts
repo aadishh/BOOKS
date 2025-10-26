@@ -52,7 +52,6 @@ export interface SignupRequest {
   email: string;
   password: string;
   role?: 'user' | 'admin';
-  twoFactorEnabled?: boolean;
 }
 
 export interface TwoFactorRequest {
@@ -297,7 +296,6 @@ export interface SignupFormData {
   email: string;
   password: string;
   confirmPassword: string;
-  twoFactorEnabled: boolean;
 }
 
 export interface TwoFactorFormData {

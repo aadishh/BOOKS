@@ -57,13 +57,13 @@ const Modal: React.FC<ModalProps> = ({
         >
           {/* Header */}
           {title && (
-            <div className="flex items-center justify-between p-6 border-b border-secondary-200">
-              <h3 className="text-lg font-semibold text-secondary-900">
+            <div className="flex items-center justify-between p-6 border-b border-muted">
+              <h3 className="text-lg font-semibold text-secondary">
                 {title}
               </h3>
               <button
                 onClick={onClose}
-                className="text-secondary-400 hover:text-secondary-600 transition-colors"
+                className="text-muted hover:text-secondary transition-colors"
               >
                 <X className="w-5 h-5" />
               </button>
@@ -75,7 +75,7 @@ const Modal: React.FC<ModalProps> = ({
             {!title && (
               <button
                 onClick={onClose}
-                className="absolute top-4 right-4 text-secondary-400 hover:text-secondary-600 transition-colors"
+                className="absolute top-4 right-4 text-muted hover:text-secondary transition-colors"
               >
                 <X className="w-5 h-5" />
               </button>

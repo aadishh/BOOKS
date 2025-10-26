@@ -206,8 +206,8 @@ const BooksPage: React.FC = () => {
     const BookCard: React.FC<{ book: Book }> = ({ book }) => (
         <Card className="group hover:shadow-lg transition-all duration-200">
             <div className="relative">
-                <div className="aspect-[3/4] bg-secondary-100 rounded-t-lg flex items-center justify-center">
-                    <BookOpen className="w-16 h-16 text-secondary-400" />
+                <div className="aspect-[3/4] bg-light rounded-t-lg flex items-center justify-center">
+                    <BookOpen className="w-16 h-16 text-muted" />
                 </div>
                 {book.discountPrice && (
                     <Badge variant="danger" className="absolute top-2 right-2">
@@ -217,15 +217,15 @@ const BooksPage: React.FC = () => {
             </div>
 
             <div className="p-4">
-                <h3 className="font-semibold text-secondary-900 mb-1 truncate-2">
+                <h3 className="font-semibold text-secondary mb-1 truncate-2">
                     {book.name}
                 </h3>
-                <p className="text-sm text-secondary-600 mb-2">by {book.author}</p>
+                <p className="text-sm text-muted mb-2">by {book.author}</p>
 
                 {book.rating && (
                     <div className="flex items-center mb-2">
-                        <Star className="w-4 h-4 text-yellow-400 fill-current" />
-                        <span className="text-sm text-secondary-600 ml-1">
+                        <Star className="w-4 h-4 text-primary fill-current" />
+                        <span className="text-sm text-muted ml-1">
                             {book.rating} ({book.reviews || 0})
                         </span>
                     </div>
@@ -235,15 +235,15 @@ const BooksPage: React.FC = () => {
                     <div className="flex items-center space-x-2">
                         {book.discountPrice ? (
                             <>
-                                <span className="text-lg font-bold text-primary-600">
+                                <span className="text-lg font-bold text-primary">
                                     {formatCurrency(book.discountPrice)}
                                 </span>
-                                <span className="text-sm text-secondary-500 line-through">
+                                <span className="text-sm text-light0 line-through">
                                     {formatCurrency(book.price)}
                                 </span>
                             </>
                         ) : (
-                            <span className="text-lg font-bold text-primary-600">
+                            <span className="text-lg font-bold text-primary">
                                 {formatCurrency(book.price)}
                             </span>
                         )}
@@ -278,20 +278,20 @@ const BooksPage: React.FC = () => {
     const BookListItem: React.FC<{ book: Book }> = ({ book }) => (
         <Card className="p-4 hover:shadow-md transition-shadow duration-200">
             <div className="flex space-x-4">
-                <div className="w-24 h-32 bg-secondary-100 rounded flex items-center justify-center flex-shrink-0">
-                    <BookOpen className="w-8 h-8 text-secondary-400" />
+                <div className="w-24 h-32 bg-light rounded flex items-center justify-center flex-shrink-0">
+                    <BookOpen className="w-8 h-8 text-muted" />
                 </div>
 
                 <div className="flex-1 min-w-0">
                     <div className="flex items-start justify-between">
                         <div className="flex-1 min-w-0">
-                            <h3 className="text-lg font-semibold text-secondary-900 truncate">
+                            <h3 className="text-lg font-semibold text-secondary truncate">
                                 {book.name}
                             </h3>
-                            <p className="text-secondary-600 mb-2">by {book.author}</p>
+                            <p className="text-muted mb-2">by {book.author}</p>
 
                             {book.description && (
-                                <p className="text-sm text-secondary-600 mb-3 truncate-3">
+                                <p className="text-sm text-muted mb-3 truncate-3">
                                     {book.description}
                                 </p>
                             )}
@@ -299,8 +299,8 @@ const BooksPage: React.FC = () => {
                             <div className="flex items-center space-x-4 mb-3">
                                 {book.rating && (
                                     <div className="flex items-center">
-                                        <Star className="w-4 h-4 text-yellow-400 fill-current" />
-                                        <span className="text-sm text-secondary-600 ml-1">
+                                        <Star className="w-4 h-4 text-primary fill-current" />
+                                        <span className="text-sm text-muted ml-1">
                                             {book.rating} ({book.reviews || 0})
                                         </span>
                                     </div>
@@ -320,15 +320,15 @@ const BooksPage: React.FC = () => {
                             <div className="text-right">
                                 {book.discountPrice ? (
                                     <>
-                                        <div className="text-xl font-bold text-primary-600">
+                                        <div className="text-xl font-bold text-primary">
                                             {formatCurrency(book.discountPrice)}
                                         </div>
-                                        <div className="text-sm text-secondary-500 line-through">
+                                        <div className="text-sm text-light0 line-through">
                                             {formatCurrency(book.price)}
                                         </div>
                                     </>
                                 ) : (
-                                    <div className="text-xl font-bold text-primary-600">
+                                    <div className="text-xl font-bold text-primary">
                                         {formatCurrency(book.price)}
                                     </div>
                                 )}
@@ -363,7 +363,7 @@ const BooksPage: React.FC = () => {
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
                 {/* Header */}
                 <div className="mb-8">
-                    <h1 className="text-3xl font-bold text-secondary-900 mb-4">
+                    <h1 className="text-3xl font-bold text-secondary mb-4">
                         Discover Books
                     </h1>
 
@@ -371,29 +371,29 @@ const BooksPage: React.FC = () => {
                     <div className="flex flex-col lg:flex-row gap-4 items-center justify-between">
                         <div className="flex-1 max-w-lg">
                             <div className="relative">
-                                <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-secondary-400 w-5 h-5" />
+                                <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-muted w-5 h-5" />
                                 <input
                                     type="text"
                                     placeholder="Search books, authors, categories..."
                                     value={searchQuery}
                                     onChange={(e) => handleSearch(e.target.value)}
-                                    className="w-full pl-10 pr-4 py-3 border border-secondary-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary-500 focus:border-transparent"
+                                    className="w-full pl-10 pr-4 py-3 border border-muted rounded-lg focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent"
                                 />
                             </div>
                         </div>
 
                         <div className="flex items-center space-x-4">
                             {/* View Mode Toggle */}
-                            <div className="flex border border-secondary-300 rounded-lg overflow-hidden">
+                            <div className="flex border border-muted rounded-lg overflow-hidden">
                                 <button
                                     onClick={() => setViewMode('grid')}
-                                    className={`p-2 ${viewMode === 'grid' ? 'bg-primary-600 text-white' : 'text-secondary-600 hover:bg-secondary-50'}`}
+                                    className={`p-2 ${viewMode === 'grid' ? 'bg-primary text-white' : 'text-muted hover:bg-light'}`}
                                 >
                                     <Grid className="w-5 h-5" />
                                 </button>
                                 <button
                                     onClick={() => setViewMode('list')}
-                                    className={`p-2 ${viewMode === 'list' ? 'bg-primary-600 text-white' : 'text-secondary-600 hover:bg-secondary-50'}`}
+                                    className={`p-2 ${viewMode === 'list' ? 'bg-primary text-white' : 'text-muted hover:bg-light'}`}
                                 >
                                     <List className="w-5 h-5" />
                                 </button>
@@ -417,10 +417,10 @@ const BooksPage: React.FC = () => {
                         <div className="w-64 flex-shrink-0">
                             <Card className="p-6 sticky top-24">
                                 <div className="flex items-center justify-between mb-4">
-                                    <h3 className="font-semibold text-secondary-900">Filters</h3>
+                                    <h3 className="font-semibold text-secondary">Filters</h3>
                                     <button
                                         onClick={clearFilters}
-                                        className="text-sm text-primary-600 hover:text-primary-700"
+                                        className="text-sm text-primary hover:text-primary"
                                     >
                                         Clear All
                                     </button>
@@ -428,13 +428,13 @@ const BooksPage: React.FC = () => {
 
                                 {/* Category Filter */}
                                 <div className="mb-6">
-                                    <label className="block text-sm font-medium text-secondary-700 mb-2">
+                                    <label className="block text-sm font-medium text-secondary mb-2">
                                         Category
                                     </label>
                                     <select
                                         value={filters.category}
                                         onChange={(e) => handleFilterChange('category', e.target.value)}
-                                        className="w-full p-2 border border-secondary-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary-500"
+                                        className="w-full p-2 border border-muted rounded-lg focus:outline-none focus:ring-2 focus:ring-primary"
                                     >
                                         <option value="">All Categories</option>
                                         {categories.map((category) => (
@@ -447,7 +447,7 @@ const BooksPage: React.FC = () => {
 
                                 {/* Price Range */}
                                 <div className="mb-6">
-                                    <label className="block text-sm font-medium text-secondary-700 mb-2">
+                                    <label className="block text-sm font-medium text-secondary mb-2">
                                         Price Range
                                     </label>
                                     <div className="flex space-x-2">
@@ -456,27 +456,27 @@ const BooksPage: React.FC = () => {
                                             placeholder="Min"
                                             value={filters.minPrice || ''}
                                             onChange={(e) => handleFilterChange('minPrice', e.target.value)}
-                                            className="w-full p-2 border border-secondary-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary-500"
+                                            className="w-full p-2 border border-muted rounded-lg focus:outline-none focus:ring-2 focus:ring-primary"
                                         />
                                         <input
                                             type="number"
                                             placeholder="Max"
                                             value={filters.maxPrice || ''}
                                             onChange={(e) => handleFilterChange('maxPrice', e.target.value)}
-                                            className="w-full p-2 border border-secondary-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary-500"
+                                            className="w-full p-2 border border-muted rounded-lg focus:outline-none focus:ring-2 focus:ring-primary"
                                         />
                                     </div>
                                 </div>
 
                                 {/* Sort Options */}
                                 <div className="mb-6">
-                                    <label className="block text-sm font-medium text-secondary-700 mb-2">
+                                    <label className="block text-sm font-medium text-secondary mb-2">
                                         Sort By
                                     </label>
                                     <select
                                         value={filters.sortBy}
                                         onChange={(e) => handleFilterChange('sortBy', e.target.value)}
-                                        className="w-full p-2 border border-secondary-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary-500 mb-2"
+                                        className="w-full p-2 border border-muted rounded-lg focus:outline-none focus:ring-2 focus:ring-primary mb-2"
                                     >
                                         {sortOptions.map((option) => (
                                             <option key={option.value} value={option.value}>
@@ -488,7 +488,7 @@ const BooksPage: React.FC = () => {
                                     <select
                                         value={filters.sortOrder}
                                         onChange={(e) => handleFilterChange('sortOrder', e.target.value)}
-                                        className="w-full p-2 border border-secondary-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary-500"
+                                        className="w-full p-2 border border-muted rounded-lg focus:outline-none focus:ring-2 focus:ring-primary"
                                     >
                                         <option value="asc">Ascending</option>
                                         <option value="desc">Descending</option>
@@ -502,9 +502,9 @@ const BooksPage: React.FC = () => {
                                         type="checkbox"
                                         checked={filters.inStock}
                                         onChange={(e) => handleFilterChange('inStock', e.target.checked)}
-                                        className="h-4 w-4 text-primary-600 focus:ring-primary-500 border-secondary-300 rounded"
+                                        className="h-4 w-4 text-primary focus:ring-primary border-muted rounded"
                                     />
-                                    <label htmlFor="in-stock" className="ml-2 text-sm text-secondary-700">
+                                    <label htmlFor="in-stock" className="ml-2 text-sm text-secondary">
                                         In stock only
                                     </label>
                                 </div>
@@ -516,13 +516,13 @@ const BooksPage: React.FC = () => {
                     <div className="flex-1">
                         {/* Results Info */}
                         <div className="flex items-center justify-between mb-6">
-                            <p className="text-secondary-600">
+                            <p className="text-muted">
                                 Showing {books.length} of {pagination.totalItems} books
                                 {searchQuery && ` for "${searchQuery}"`}
                             </p>
 
                             {pagination.totalPages > 1 && (
-                                <p className="text-secondary-600">
+                                <p className="text-muted">
                                     Page {pagination.currentPage} of {pagination.totalPages}
                                 </p>
                             )}
@@ -534,11 +534,11 @@ const BooksPage: React.FC = () => {
                             </div>
                         ) : books.length === 0 ? (
                             <div className="text-center py-12">
-                                <BookOpen className="w-16 h-16 text-secondary-400 mx-auto mb-4" />
-                                <h3 className="text-lg font-semibold text-secondary-900 mb-2">
+                                <BookOpen className="w-16 h-16 text-muted mx-auto mb-4" />
+                                <h3 className="text-lg font-semibold text-secondary mb-2">
                                     No books found
                                 </h3>
-                                <p className="text-secondary-600 mb-4">
+                                <p className="text-muted mb-4">
                                     Try adjusting your search or filters to find what you're looking for.
                                 </p>
                                 <Button onClick={clearFilters}>Clear Filters</Button>

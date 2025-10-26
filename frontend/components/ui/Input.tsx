@@ -18,7 +18,7 @@ const Input = forwardRef<HTMLInputElement, InputProps>(({
   return (
     <div className="w-full">
       {label && (
-        <label className="block text-sm font-medium text-secondary-700 mb-1">
+        <label className="block text-sm font-medium text-secondary mb-1">
           {label}
           {required && <span className="text-red-500 ml-1">*</span>}
         </label>
@@ -34,11 +34,11 @@ const Input = forwardRef<HTMLInputElement, InputProps>(({
         maxLength={maxLength}
         className={cn(
           'w-full px-3 py-2 border rounded-lg shadow-sm transition-colors duration-200',
-          'focus:outline-none focus:ring-2 focus:ring-primary-500 focus:border-transparent',
-          'disabled:bg-secondary-50 disabled:cursor-not-allowed',
+          'focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent',
+          'disabled:bg-light disabled:cursor-not-allowed',
           error
-            ? 'border-red-300 focus:ring-red-500'
-            : 'border-secondary-300 hover:border-secondary-400',
+            ? 'border-red-500 focus:ring-red-500'
+            : 'border-muted hover:border-muted/80',
           className
         )}
         {...props}

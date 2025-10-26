@@ -76,21 +76,21 @@ const LoginPage: React.FC = () => {
 
   return (
     <Layout title="Sign In - BookStore" noFooter>
-      <div className="min-h-screen flex items-center justify-center py-12 px-4 sm:px-6 lg:px-8 bg-secondary-50">
+      <div className="min-h-screen flex items-center justify-center py-12 px-4 sm:px-6 lg:px-8 bg-light">
         <div className="max-w-md w-full space-y-8">
           {/* Header */}
           <div className="text-center">
             <Link href="/" className="inline-flex items-center space-x-2 mb-8">
-              <div className="w-10 h-10 bg-primary-600 rounded-lg flex items-center justify-center">
+              <div className="w-10 h-10 bg-primary rounded-lg flex items-center justify-center">
                 <span className="text-white font-bold text-xl">B</span>
               </div>
-              <span className="text-2xl font-bold text-secondary-900">BookStore</span>
+              <span className="text-2xl font-bold text-secondary">BookStore</span>
             </Link>
             
-            <h2 className="text-3xl font-bold text-secondary-900">
+            <h2 className="text-3xl font-bold text-secondary">
               {requiresTwoFactor ? 'Two-Factor Authentication' : 'Welcome back'}
             </h2>
-            <p className="mt-2 text-secondary-600">
+            <p className="mt-2 text-muted">
               {requiresTwoFactor 
                 ? 'Enter the verification code sent to your email'
                 : 'Sign in to your account to continue'
@@ -133,7 +133,7 @@ const LoginPage: React.FC = () => {
                     />
                     <button
                       type="button"
-                      className="absolute right-3 top-9 text-secondary-400 hover:text-secondary-600"
+                      className="absolute right-3 top-9 text-muted hover:text-secondary"
                       onClick={() => setShowPassword(!showPassword)}
                     >
                       {showPassword ? <EyeOff className="w-5 h-5" /> : <Eye className="w-5 h-5" />}
@@ -147,16 +147,16 @@ const LoginPage: React.FC = () => {
                       id="remember-me"
                       name="remember-me"
                       type="checkbox"
-                      className="h-4 w-4 text-primary-600 focus:ring-primary-500 border-secondary-300 rounded"
+                      className="h-4 w-4 text-primary focus:ring-primary border-muted rounded"
                     />
-                    <label htmlFor="remember-me" className="ml-2 block text-sm text-secondary-700">
+                    <label htmlFor="remember-me" className="ml-2 block text-sm text-secondary">
                       Remember me
                     </label>
                   </div>
 
                   <Link
                     href="/auth/forgot-password"
-                    className="text-sm text-primary-600 hover:text-primary-500"
+                    className="text-sm text-primary hover:text-primary"
                   >
                     Forgot password?
                   </Link>
@@ -190,7 +190,7 @@ const LoginPage: React.FC = () => {
                     error={twoFAErrors.code?.message}
                     required
                   />
-                  <p className="mt-2 text-sm text-secondary-600">
+                  <p className="mt-2 text-sm text-muted">
                     Check your email for the verification code. It expires in 4 minutes.
                   </p>
                 </div>
@@ -222,10 +222,10 @@ const LoginPage: React.FC = () => {
               <div className="mt-6">
                 <div className="relative">
                   <div className="absolute inset-0 flex items-center">
-                    <div className="w-full border-t border-secondary-300" />
+                    <div className="w-full border-t border-muted" />
                   </div>
                   <div className="relative flex justify-center text-sm">
-                    <span className="px-2 bg-white text-secondary-500">Don't have an account?</span>
+                    <span className="px-2 bg-white text-light0">Don't have an account?</span>
                   </div>
                 </div>
 
@@ -241,9 +241,9 @@ const LoginPage: React.FC = () => {
           </Card>
 
           {/* Demo Credentials */}
-          <Card className="p-4 bg-blue-50 border-blue-200">
-            <h3 className="text-sm font-medium text-blue-900 mb-2">Demo Credentials</h3>
-            <div className="text-xs text-blue-800 space-y-1">
+          <Card className="p-4 bg-primary/5 border-primary/20">
+            <h3 className="text-sm font-medium text-primary mb-2">Demo Credentials</h3>
+            <div className="text-xs text-primary/80 space-y-1">
               <div><strong>Admin:</strong> admin / password</div>
               <div><strong>User:</strong> user / password</div>
             </div>

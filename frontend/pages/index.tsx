@@ -96,26 +96,26 @@ const HomePage: React.FC = () => {
   ];
 
   const categories = [
-    { name: 'Fiction', count: '12,000+', color: 'bg-blue-500' },
-    { name: 'Non-Fiction', count: '8,500+', color: 'bg-green-500' },
-    { name: 'Science', count: '6,200+', color: 'bg-purple-500' },
-    { name: 'Technology', count: '4,800+', color: 'bg-orange-500' },
-    { name: 'History', count: '3,900+', color: 'bg-red-500' },
-    { name: 'Biography', count: '2,700+', color: 'bg-indigo-500' },
+    { name: 'Fiction', count: '12,000+', color: 'bg-primary' },
+    { name: 'Non-Fiction', count: '8,500+', color: 'bg-secondary' },
+    { name: 'Science', count: '6,200+', color: 'bg-primary/80' },
+    { name: 'Technology', count: '4,800+', color: 'bg-secondary/80' },
+    { name: 'History', count: '3,900+', color: 'bg-primary/60' },
+    { name: 'Biography', count: '2,700+', color: 'bg-secondary/60' },
   ];
 
   return (
     <Layout>
       {/* Hero Section */}
-      <section className="relative bg-gradient-to-br from-primary-600 via-primary-700 to-primary-800 text-white">
+      <section className="relative bg-gradient-to-br from-primary via-primary to-primary text-white">
         <div className="absolute inset-0 bg-black opacity-10"></div>
         <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 lg:py-32">
           <div className="text-center">
             <h1 className="text-4xl md:text-6xl font-bold mb-6 animate-fade-in">
               Discover Your Next
-              <span className="block text-yellow-300">Great Read</span>
+              <span className="block text-primary">Great Read</span>
             </h1>
-            <p className="text-xl md:text-2xl mb-8 text-primary-100 max-w-3xl mx-auto animate-slide-up">
+            <p className="text-xl md:text-2xl mb-8 text-light max-w-3xl mx-auto animate-slide-up">
               Explore our vast collection of books across all genres. From bestsellers to hidden gems, 
               find the perfect book for every mood and moment.
             </p>
@@ -123,13 +123,13 @@ const HomePage: React.FC = () => {
             {/* Search Bar */}
             <form onSubmit={handleSearch} className="max-w-2xl mx-auto mb-8 animate-bounce-in">
               <div className="relative">
-                <Search className="absolute left-4 top-1/2 transform -translate-y-1/2 text-secondary-400 w-5 h-5" />
+                <Search className="absolute left-4 top-1/2 transform -translate-y-1/2 text-muted w-5 h-5" />
                 <input
                   type="text"
                   placeholder="Search for books, authors, or categories..."
                   value={searchQuery}
                   onChange={(e) => setSearchQuery(e.target.value)}
-                  className="w-full pl-12 pr-4 py-4 text-lg rounded-full border-0 focus:outline-none focus:ring-4 focus:ring-primary-300 text-secondary-900 shadow-lg"
+                  className="w-full pl-12 pr-4 py-4 text-lg rounded-full border-0 focus:outline-none focus:ring-4 focus:ring-primary text-secondary shadow-lg"
                 />
                 <Button
                   type="submit"
@@ -142,14 +142,14 @@ const HomePage: React.FC = () => {
 
             <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
               <Link href="/books">
-                <Button size="lg" className="bg-white text-primary-600 hover:bg-primary-50">
+                <Button size="lg" className="bg-white text-primary hover:bg-light">
                   Browse All Books
                   <ArrowRight className="ml-2 w-5 h-5" />
                 </Button>
               </Link>
               {!isAuthenticated && (
                 <Link href="/auth/signup">
-                  <Button variant="outline" size="lg" className="border-white text-white hover:bg-white hover:text-primary-600">
+                  <Button variant="outline" size="lg" className="border-white text-white hover:bg-white hover:text-primary">
                     Join Now - It's Free
                   </Button>
                 </Link>
@@ -167,13 +167,13 @@ const HomePage: React.FC = () => {
               const Icon = stat.icon;
               return (
                 <div key={index} className="text-center">
-                  <div className="inline-flex items-center justify-center w-16 h-16 bg-primary-100 rounded-full mb-4">
-                    <Icon className="w-8 h-8 text-primary-600" />
+                  <div className="inline-flex items-center justify-center w-16 h-16 bg-light rounded-full mb-4">
+                    <Icon className="w-8 h-8 text-primary" />
                   </div>
-                  <div className="text-3xl font-bold text-secondary-900 mb-2">
+                  <div className="text-3xl font-bold text-secondary mb-2">
                     {stat.value}
                   </div>
-                  <div className="text-secondary-600">{stat.label}</div>
+                  <div className="text-muted">{stat.label}</div>
                 </div>
               );
             })}
@@ -182,13 +182,13 @@ const HomePage: React.FC = () => {
       </section>
 
       {/* Categories Section */}
-      <section className="py-16 bg-secondary-50">
+      <section className="py-16 bg-light">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12">
-            <h2 className="text-3xl md:text-4xl font-bold text-secondary-900 mb-4">
+            <h2 className="text-3xl md:text-4xl font-bold text-secondary mb-4">
               Explore by Category
             </h2>
-            <p className="text-xl text-secondary-600 max-w-2xl mx-auto">
+            <p className="text-xl text-muted max-w-2xl mx-auto">
               Discover books across various genres and subjects
             </p>
           </div>
@@ -204,10 +204,10 @@ const HomePage: React.FC = () => {
                   <div className={`w-12 h-12 ${category.color} rounded-full mx-auto mb-4 flex items-center justify-center`}>
                     <BookOpen className="w-6 h-6 text-white" />
                   </div>
-                  <h3 className="font-semibold text-secondary-900 mb-2">
+                  <h3 className="font-semibold text-secondary mb-2">
                     {category.name}
                   </h3>
-                  <p className="text-sm text-secondary-600">{category.count}</p>
+                  <p className="text-sm text-muted">{category.count}</p>
                 </Card>
               </Link>
             ))}
@@ -220,10 +220,10 @@ const HomePage: React.FC = () => {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex items-center justify-between mb-12">
             <div>
-              <h2 className="text-3xl md:text-4xl font-bold text-secondary-900 mb-4">
+              <h2 className="text-3xl md:text-4xl font-bold text-secondary mb-4">
                 Featured Books
               </h2>
-              <p className="text-xl text-secondary-600">
+              <p className="text-xl text-muted">
                 Handpicked selections from our collection
               </p>
             </div>
@@ -251,8 +251,8 @@ const HomePage: React.FC = () => {
               {featuredBooks.map((book) => (
                 <Card key={book.id} className="group hover:shadow-lg transition-all duration-200">
                   <div className="relative">
-                    <div className="aspect-[3/4] bg-secondary-100 rounded-t-lg flex items-center justify-center">
-                      <BookOpen className="w-16 h-16 text-secondary-400" />
+                    <div className="aspect-[3/4] bg-light rounded-t-lg flex items-center justify-center">
+                      <BookOpen className="w-16 h-16 text-muted" />
                     </div>
                     {book.discountPrice && (
                       <Badge
@@ -265,17 +265,17 @@ const HomePage: React.FC = () => {
                   </div>
                   
                   <div className="p-4">
-                    <h3 className="font-semibold text-secondary-900 mb-1 truncate-2">
+                    <h3 className="font-semibold text-secondary mb-1 truncate-2">
                       {book.name}
                     </h3>
-                    <p className="text-sm text-secondary-600 mb-2">
+                    <p className="text-sm text-muted mb-2">
                       by {book.author}
                     </p>
                     
                     {book.rating && (
                       <div className="flex items-center mb-2">
-                        <Star className="w-4 h-4 text-yellow-400 fill-current" />
-                        <span className="text-sm text-secondary-600 ml-1">
+                        <Star className="w-4 h-4 text-primary fill-current" />
+                        <span className="text-sm text-muted ml-1">
                           {book.rating} ({book.reviews || 0})
                         </span>
                       </div>
@@ -285,15 +285,15 @@ const HomePage: React.FC = () => {
                       <div className="flex items-center space-x-2">
                         {book.discountPrice ? (
                           <>
-                            <span className="text-lg font-bold text-primary-600">
+                            <span className="text-lg font-bold text-primary">
                               {formatCurrency(book.discountPrice)}
                             </span>
-                            <span className="text-sm text-secondary-500 line-through">
+                            <span className="text-sm text-light0 line-through">
                               {formatCurrency(book.price)}
                             </span>
                           </>
                         ) : (
-                          <span className="text-lg font-bold text-primary-600">
+                          <span className="text-lg font-bold text-primary">
                             {formatCurrency(book.price)}
                           </span>
                         )}
@@ -330,24 +330,24 @@ const HomePage: React.FC = () => {
       </section>
 
       {/* CTA Section */}
-      <section className="py-16 bg-gradient-to-r from-primary-600 to-primary-800 text-white">
+      <section className="py-16 bg-gradient-to-r from-primary to-primary text-white">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <h2 className="text-3xl md:text-4xl font-bold mb-4">
             Ready to Start Reading?
           </h2>
-          <p className="text-xl mb-8 text-primary-100">
+          <p className="text-xl mb-8 text-light">
             Join thousands of book lovers who trust us for their reading journey.
             Get started today and discover your next favorite book.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Link href="/books">
-              <Button size="lg" className="bg-white text-primary-600 hover:bg-primary-50">
+              <Button size="lg" className="bg-white text-primary hover:bg-light">
                 Start Shopping
               </Button>
             </Link>
             {!isAuthenticated && (
               <Link href="/auth/signup">
-                <Button variant="outline" size="lg" className="border-white text-white hover:bg-white hover:text-primary-600">
+                <Button variant="outline" size="lg" className="border-white text-white hover:bg-white hover:text-primary">
                   Create Account
                 </Button>
               </Link>

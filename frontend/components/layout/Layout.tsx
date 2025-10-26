@@ -37,7 +37,7 @@ const Layout: React.FC<LayoutProps> = ({
         <meta name="twitter:description" content={description} />
       </Head>
 
-      <div className="min-h-screen flex flex-col bg-secondary-50">
+      <div className="min-h-screen flex flex-col bg-light">
         <Header />
         
         <main className="flex-1">

@@ -15,7 +15,7 @@ const SignupPage: React.FC = () => {
   const [requiresTwoFactor, setRequiresTwoFactor] = useState(false);
   const [tempToken, setTempToken] = useState('');
   const [loading, setLoading] = useState(false);
-  
+
   const { signup, verify2FA } = useAuth();
   const router = useRouter();
 
@@ -42,9 +42,8 @@ const SignupPage: React.FC = () => {
         username: data.username,
         email: data.email,
         password: data.password,
-        twoFactorEnabled: data.twoFactorEnabled,
       });
-      
+
       if (response.requiresTwoFactor && response.tempToken) {
         setRequiresTwoFactor(true);
         setTempToken(response.tempToken);
@@ -67,7 +66,7 @@ const SignupPage: React.FC = () => {
         tempToken,
         code: data.code,
       });
-      
+
       // Redirect to home or intended page
       const redirectTo = (router.query.redirect as string) || '/';
       router.push(redirectTo);
@@ -86,22 +85,22 @@ const SignupPage: React.FC = () => {
 
   return (
     <Layout title="Sign Up - BookStore" noFooter>
-      <div className="min-h-screen flex items-center justify-center py-12 px-4 sm:px-6 lg:px-8 bg-secondary-50">
+      <div className="min-h-screen flex items-center justify-center py-12 px-4 sm:px-6 lg:px-8 bg-light">
         <div className="max-w-md w-full space-y-8">
           {/* Header */}
           <div className="text-center">
             <Link href="/" className="inline-flex items-center space-x-2 mb-8">
-              <div className="w-10 h-10 bg-primary-600 rounded-lg flex items-center justify-center">
+              <div className="w-10 h-10 bg-primary rounded-lg flex items-center justify-center">
                 <span className="text-white font-bold text-xl">B</span>
               </div>
-              <span className="text-2xl font-bold text-secondary-900">BookStore</span>
+              <span className="text-2xl font-bold text-secondary">BookStore</span>
             </Link>
-            
-            <h2 className="text-3xl font-bold text-secondary-900">
+
+            <h2 className="text-3xl font-bold text-secondary">
               {requiresTwoFactor ? 'Verify Your Email' : 'Create Account'}
             </h2>
-            <p className="mt-2 text-secondary-600">
-              {requiresTwoFactor 
+            <p className="mt-2 text-muted">
+              {requiresTwoFactor
                 ? 'Enter the verification code sent to your email'
                 : 'Join thousands of book lovers today'
               }
@@ -165,7 +164,7 @@ const SignupPage: React.FC = () => {
                     />
                     <button
                       type="button"
-                      className="absolute right-3 top-9 text-secondary-400 hover:text-secondary-600"
+                      className="absolute right-3 top-9 text-muted hover:text-secondary"
                       onClick={() => setShowPassword(!showPassword)}
                     >
                       {showPassword ? <EyeOff className="w-5 h-5" /> : <Eye className="w-5 h-5" />}
@@ -188,7 +187,7 @@ const SignupPage: React.FC = () => {
                     />
                     <button
                       type="button"
-                      className="absolute right-3 top-9 text-secondary-400 hover:text-secondary-600"
+                      className="absolute right-3 top-9 text-muted hover:text-secondary"
                       onClick={() => setShowConfirmPassword(!showConfirmPassword)}
                     >
                       {showConfirmPassword ? <EyeOff className="w-5 h-5" /> : <Eye className="w-5 h-5" />}
@@ -196,17 +195,7 @@ const SignupPage: React.FC = () => {
                   </div>
                 </div>
 
-                <div className="flex items-center">
-                  <input
-                    id="two-factor"
-                    type="checkbox"
-                    className="h-4 w-4 text-primary-600 focus:ring-primary-500 border-secondary-300 rounded"
-                    {...registerSignup('twoFactorEnabled')}
-                  />
-                  <label htmlFor="two-factor" className="ml-2 block text-sm text-secondary-700">
-                    Enable two-factor authentication (recommended)
-                  </label>
-                </div>
+
 
                 <div className="flex items-center">
                   <input
@@ -214,15 +203,15 @@ const SignupPage: React.FC = () => {
                     name="terms"
                     type="checkbox"
                     required
-                    className="h-4 w-4 text-primary-600 focus:ring-primary-500 border-secondary-300 rounded"
+                    className="h-4 w-4 text-primary focus:ring-primary border-muted rounded"
                   />
-                  <label htmlFor="terms" className="ml-2 block text-sm text-secondary-700">
+                  <label htmlFor="terms" className="ml-2 block text-sm text-secondary">
                     I agree to the{' '}
-                    <Link href="/terms" className="text-primary-600 hover:text-primary-500">
+                    <Link href="/terms" className="text-primary hover:text-primary">
                       Terms of Service
                     </Link>{' '}
                     and{' '}
-                    <Link href="/privacy" className="text-primary-600 hover:text-primary-500">
+                    <Link href="/privacy" className="text-primary hover:text-primary">
                       Privacy Policy
                     </Link>
                   </label>
@@ -256,7 +245,7 @@ const SignupPage: React.FC = () => {
                     error={twoFAErrors.code?.message}
                     required
                   />
-                  <p className="mt-2 text-sm text-secondary-600">
+                  <p className="mt-2 text-sm text-muted">
                     Check your email for the verification code. It expires in 4 minutes.
                   </p>
                 </div>
@@ -288,10 +277,10 @@ const SignupPage: React.FC = () => {
               <div className="mt-6">
                 <div className="relative">
                   <div className="absolute inset-0 flex items-center">
-                    <div className="w-full border-t border-secondary-300" />
+                    <div className="w-full border-t border-muted" />
                   </div>
                   <div className="relative flex justify-center text-sm">
-                    <span className="px-2 bg-white text-secondary-500">Already have an account?</span>
+                    <span className="px-2 bg-white text-light0">Already have an account?</span>
                   </div>
                 </div>
 
