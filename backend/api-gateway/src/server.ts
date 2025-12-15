@@ -293,15 +293,16 @@ app.post('/auth/signup', async (req: Request, res: Response): Promise<void> => {
       username,
       password,
       email,
-      role = 'user',
-      twoFactorEnabled = false
+      role = 'user'
     }: {
       username: string;
       password: string;
       email: string;
       role?: 'user' | 'admin';
-      twoFactorEnabled?: boolean;
     } = req.body;
+
+    // 2FA is always disabled by default during signup
+    const twoFactorEnabled = false;
 
     // Validation
     if (!username || !password || !email) {
@@ -340,55 +341,17 @@ app.post('/auth/signup', async (req: Request, res: Response): Promise<void> => {
       return;
     }
 
-    // Create new user
+    // Create new user with 2FA disabled by default
     const newUser = new User({
       username,
       email,
       password, // Will be hashed by pre-save middleware
       role,
-      twoFactorEnabled,
-      emailVerified: !twoFactorEnabled // Auto-verify if 2FA is disabled
+      twoFactorEnabled: false, // Always false during signup
+      emailVerified: true // Auto-verify since 2FA is disabled during signup
     }) as IUser;
 
-    // If 2FA is enabled, send OTP for verification before saving user
-    if (twoFactorEnabled) {
-      const otp = generateOTP();
-      const otpKey = `signup_${newUser._id}_${Date.now()}`;
-      const expiresAt = Date.now() + (4 * 60 * 1000); // 4 minutes
-
-      // Store OTP and user data temporarily
-      await otpService.set(otpKey, {
-        userId: newUser._id.toString(),
-        otp: otp,
-        expiresAt: expiresAt,
-        attempts: 0,
-        maxAttempts: 3,
-        pendingUser: newUser // Store user data to save after verification
-      });
-
-      // Send OTP via email
-      const emailSent = await sendOTPEmail(email, otp, username);
-      if (!emailSent) {
-        ResponseHandler.serverError(res, 'Failed to send verification code. Please try again later.');
-        return;
-      }
-
-      const tempToken = generateToken(
-        { userId: newUser._id.toString(), step: 'signup-2fa', otpKey: otpKey },
-        '5m'
-      );
-
-      const responseData = {
-        requiresTwoFactor: true,
-        tempToken,
-        expiresIn: '4 minutes'
-      };
-
-      ResponseHandler.success(res, responseData, 'Verification code sent to your email. Please verify to complete registration.');
-      return;
-    }
-
-    // Save user immediately if 2FA is not enabled
+    // Save user immediately (no 2FA during signup)
     await newUser.save();
 
     // Generate token for immediate login
