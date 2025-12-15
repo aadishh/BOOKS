@@ -1,169 +1,134 @@
-# BookStore Frontend
+# Bookstore Frontend - Next.js
 
-A modern, responsive Next.js frontend for the BookStore microservices backend.
+This is a Next.js 14+ application with TypeScript, migrated from React.
 
-## 🚀 Features
+## Tech Stack
 
-- **Responsive Design**: Works seamlessly on all devices (mobile, tablet, desktop)
-- **Modern UI**: Built with Tailwind CSS and custom components
-- **Authentication**: Login/signup with 2FA support
-- **Shopping Cart**: Add, update, remove items with real-time updates
-- **Wishlist**: Save books for later and move to cart
-- **Book Search**: Advanced search with filters and pagination
-- **Admin Panel**: User management and analytics (for admin users)
-- **Real-time Notifications**: Toast notifications for user feedback
+- **Next.js 14+** - React framework with App Router
+- **TypeScript** - Type safety
+- **Tailwind CSS** - Styling
+- **React Context API** - State management
 
-## 🛠 Tech Stack
+## Getting Started
 
-- **Next.js 14** - React framework with SSR/SSG
-- **TypeScript** - Type safety and better DX
-- **Tailwind CSS** - Utility-first CSS framework
-- **React Query** - Server state management
-- **React Hook Form** - Form handling and validation
-- **Lucide React** - Beautiful icons
-- **React Hot Toast** - Notifications
+### Installation
 
-## 📦 Installation
+```bash
+npm install
+```
 
-1. **Install dependencies:**
-   ```bash
-   cd frontend
-   npm install
-   ```
+### Development
 
-2. **Set up environment variables:**
-   ```bash
-   cp .env.local.example .env.local
-   ```
-   
-   Update `.env.local` with your backend API URL:
-   ```
-   NEXT_PUBLIC_API_URL=http://localhost:2000
-   ```
+```bash
+npm run dev
+```
 
-3. **Start the development server:**
-   ```bash
-   npm run dev
-   ```
+Open [http://localhost:3000](http://localhost:3000) in your browser.
 
-4. **Open your browser:**
-   Navigate to [http://localhost:3000](http://localhost:3000)
+### Build
 
-## 🏗 Project Structure
+```bash
+npm run build
+npm start
+```
+
+## Project Structure
 
 ```
 frontend/
-├── components/          # Reusable UI components
-│   ├── ui/             # Basic UI components (Button, Input, etc.)
-│   └── layout/         # Layout components (Header, Footer)
-├── hooks/              # Custom React hooks
-├── lib/                # API clients and utilities
-├── pages/              # Next.js pages
-├── styles/             # Global styles
-├── types/              # TypeScript type definitions
-└── utils/              # Utility functions
+├── src/
+│   ├── app/                    # Next.js App Router
+│   │   ├── (authenticated)/    # Protected routes
+│   │   │   ├── books/
+│   │   │   ├── cart/
+│   │   │   ├── contact/
+│   │   │   ├── myBook/
+│   │   │   ├── profile/
+│   │   │   ├── admin/
+│   │   │   └── layout.tsx
+│   │   ├── login/
+│   │   ├── layout.tsx
+│   │   ├── page.tsx
+│   │   └── globals.css
+│   ├── components/             # React components
+│   │   ├── admin/
+│   │   ├── Books/
+│   │   ├── Home/
+│   │   ├── Login/
+│   │   ├── Profile/
+│   │   ├── SingleBook/
+│   │   └── ...
+│   ├── context/                # React Context providers
+│   │   ├── AuthContext.tsx
+│   │   ├── GlobalContext.tsx
+│   │   └── Providers.tsx
+│   ├── lib/                    # Utilities
+│   │   ├── api.ts             # API functions
+│   │   ├── constants.ts       # Constants
+│   │   └── helpers.ts         # Helper functions
+│   └── types/                  # TypeScript types
+│       └── index.ts
+├── public/                     # Static assets
+├── .env.local                  # Environment variables
+├── next.config.js
+├── tailwind.config.ts
+├── tsconfig.json
+└── package.json
 ```
 
-## 🔧 Available Scripts
+## Features
 
-- `npm run dev` - Start development server
-- `npm run build` - Build for production
-- `npm run start` - Start production server
-- `npm run lint` - Run ESLint
+- **Authentication** - Login/Signup with JWT
+- **Book Browsing** - View and search books
+- **User Profile** - Manage user information
+- **Shopping Cart** - Add books to cart
+- **Admin Panel** - Upload new books
+- **Responsive Design** - Mobile-friendly UI
 
-## 🎨 Components
+## Environment Variables
 
-### UI Components
-- **Button** - Versatile button with multiple variants
-- **Input** - Form input with validation support
-- **Modal** - Accessible modal dialogs
-- **Card** - Flexible card container
-- **Badge** - Status indicators
-- **LoadingSpinner** - Loading states
+Create a `.env.local` file:
 
-### Layout Components
-- **Header** - Navigation with search, cart, and user menu
-- **Footer** - Site footer with links and newsletter
-- **Layout** - Main layout wrapper with SEO
+```env
+NEXT_PUBLIC_API_URL=https://bookstore-backend-gyz6.onrender.com
+```
 
-## 🔐 Authentication
+## Key Differences from React
 
-The app supports:
-- Username/email login
-- User registration
-- Two-factor authentication (2FA)
-- Password reset (planned)
-- Profile management
+1. **File-based Routing** - Pages are created in `app/` directory
+2. **Server Components** - Components are server-side by default (use `'use client'` for client components)
+3. **Image Optimization** - Use `next/image` instead of `<img>`
+4. **Link Component** - Use `next/link` for navigation
+5. **API Routes** - Can create API endpoints in `app/api/`
 
-## 🛒 Shopping Features
+## TypeScript Types
 
-- **Product Catalog**: Browse books with search and filters
-- **Shopping Cart**: Add/remove items, update quantities
-- **Wishlist**: Save items for later
-- **Checkout**: Complete purchase flow (planned)
-- **Order History**: View past orders (planned)
+All types are defined in `src/types/index.ts`:
+- User types
+- Book types
+- Form data types
+- API response types
+- Context types
 
-## 📱 Responsive Design
+## API Integration
 
-The frontend is built mobile-first and includes:
-- Responsive navigation with mobile menu
-- Touch-friendly interfaces
-- Optimized layouts for all screen sizes
-- Proper accessibility support
+API functions are in `src/lib/api.ts`:
+- `getBooks()` - Fetch all books
+- `loginUser()` - User login
+- `signUpUser()` - User registration
+- `profileBuild()` - Update profile
+- `uploadBook()` - Upload new book
 
-## 🔌 API Integration
+## Deployment
 
-The frontend integrates with the backend microservices:
-- **Authentication Service** (Port 2000)
-- **Books Service** (Port 2003)
-- **Orders/Cart Service** (Port 2001)
-- **Shipping Service** (Port 2002)
+Deploy to Vercel:
 
-## 🐛 Bug Fixes Applied
+```bash
+npm run build
+```
 
-1. **Type Safety**: Fixed TypeScript errors in book filters
-2. **Memory Leaks**: Added cleanup in useEffect hooks
-3. **Form Integration**: Fixed react-hook-form compatibility
-4. **Click Outside**: Improved user menu behavior
-5. **JSX Syntax**: Fixed React import issues
-6. **Input Validation**: Added proper form validation
+Or use the Vercel CLI:
 
-## 🚀 Deployment
-
-1. **Build the application:**
-   ```bash
-   npm run build
-   ```
-
-2. **Start production server:**
-   ```bash
-   npm start
-   ```
-
-3. **Deploy to Vercel (recommended):**
-   ```bash
-   npx vercel
-   ```
-
-## 🔮 Future Enhancements
-
-- [ ] Book detail pages
-- [ ] Complete checkout flow
-- [ ] Order tracking
-- [ ] User reviews and ratings
-- [ ] Advanced search filters
-- [ ] Dark mode support
-- [ ] PWA features
-- [ ] Performance optimizations
-
-## 🤝 Contributing
-
-1. Fork the repository
-2. Create a feature branch
-3. Make your changes
-4. Add tests if applicable
-5. Submit a pull request
-
-## 📄 License
-
-This project is licensed under the MIT License.
+```bash
+vercel
+```
